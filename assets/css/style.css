@@ -355,6 +355,19 @@ textarea.form-control:focus::placeholder {
   color: rgba(230, 237, 255, 0.62);
 }
 
+html[data-theme="light"] .form-control::placeholder,
+html[data-theme="light"] textarea.form-control::placeholder,
+html[data-theme="light"] .form-select::placeholder {
+  color: rgba(15, 23, 42, 0.45);
+  opacity: 1;
+}
+
+html[data-theme="light"] .form-control:focus::placeholder,
+html[data-theme="light"] textarea.form-control:focus::placeholder,
+html[data-theme="light"] .form-select:focus::placeholder {
+  color: rgba(15, 23, 42, 0.6);
+}
+
 .form-label {
   color: var(--muted);
 }
