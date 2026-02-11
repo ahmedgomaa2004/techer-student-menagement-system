@@ -244,6 +244,17 @@ a:hover {
   border-radius: 12px;
 }
 
+.form-control:disabled,
+.form-control[readonly],
+.form-select:disabled {
+  background-color: rgba(10, 12, 20, 0.5);
+  border-color: rgba(128, 142, 187, 0.18);
+  color: rgba(154, 166, 199, 0.6);
+  opacity: 1;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
 .form-control:focus,
 .form-select:focus {
   border-color: var(--neon-cyan);
