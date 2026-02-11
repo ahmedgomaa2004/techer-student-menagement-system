@@ -272,6 +272,25 @@ textarea.form-control:focus::placeholder {
   opacity: 1;
 }
 
+.form-control[type="file"] {
+  padding: 0.45rem 0.6rem;
+}
+
+.form-control[type="file"]::file-selector-button {
+  background: rgba(0, 245, 255, 0.12);
+  color: var(--text);
+  border: 1px solid rgba(0, 245, 255, 0.35);
+  border-radius: 10px;
+  padding: 0.35rem 0.85rem;
+  margin-inline-end: 0.6rem;
+  transition: all 0.25s ease;
+}
+
+.form-control[type="file"]::file-selector-button:hover {
+  background: rgba(0, 245, 255, 0.2);
+  box-shadow: var(--glow);
+}
+
 .table {
   color: var(--text);
 }
@@ -420,6 +439,77 @@ textarea.form-control:focus::placeholder {
   .main-content {
     margin-right: 0;
     padding: 16px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .main-content {
+    padding: 12px;
+  }
+
+  .topbar {
+    padding: 10px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .topbar > .d-flex {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px !important;
+    flex-wrap: wrap;
+  }
+
+  .topbar .btn,
+  .topbar .navbar-icon {
+    min-height: 40px;
+  }
+
+  .topbar .btn {
+    padding-inline: 10px;
+    font-size: 0.95rem;
+  }
+
+  .topbar .role-toggle {
+    padding: 6px 10px;
+  }
+
+  .navbar-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .page-header {
+    margin: 16px 0 14px;
+    align-items: flex-start;
+  }
+
+  .page-title {
+    font-size: 1.2rem;
+    line-height: 1.35;
+  }
+
+  .page-header > .btn {
+    width: 100%;
+  }
+
+  .glass-card {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .form-control,
+  .form-select {
+    min-height: 44px;
+    font-size: 1rem;
+  }
+
+  .table-responsive {
+    border-radius: 12px;
+  }
+
+  .breadcrumb {
+    font-size: 0.9rem;
   }
 }
 
