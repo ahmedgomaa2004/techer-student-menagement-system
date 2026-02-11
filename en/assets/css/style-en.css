@@ -1,0 +1,26 @@
+﻿body.en-site {
+  font-family: "Rajdhani", "Segoe UI", sans-serif;
+}
+
+.en-site .sidebar {
+  right: auto;
+  left: 0;
+  border-left: none;
+  border-right: 1px solid var(--border);
+}
+
+.en-site .main-content {
+  margin-right: 0;
+  margin-left: 260px;
+}
+
+.en-site .sidebar .nav-link.active::before {
+  right: auto;
+  left: -6px;
+}
+
+@media (max-width: 991.98px) {
+  .en-site .main-content {
+    margin-left: 0;
+  }
+}
