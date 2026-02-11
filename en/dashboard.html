@@ -46,6 +46,7 @@
           </div>
           <div class="d-flex align-items-center gap-3">
             <button class="btn btn-outline-primary role-toggle" id="roleToggleBtn">Student</button>
+            <button class="btn btn-outline-primary theme-toggle" id="themeToggleBtn" type="button"><i class="bi bi-sun"></i></button>
             <div class="navbar-icon"><i class="bi bi-bell"></i></div>
             <div class="dropdown">
               <button class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">Account</button>
@@ -75,9 +76,39 @@
           <div class="col-md-3"><div class="glass-card stat-card"><div><div class="text-muted">Payments</div><h4 id="statPayments">0%</h4></div><div class="icon"><i class="bi bi-wallet2"></i></div></div></div>
         </div>
         <div class="row g-3 mt-2">
-          <div class="col-lg-4"><div class="glass-card"><h6>Attendance Progress</h6><div class="progress mt-3"><div class="progress-bar" id="progressAttendance" style="width: 0%"></div></div></div></div>
-          <div class="col-lg-4"><div class="glass-card"><h6>Grade Progress</h6><div class="progress mt-3"><div class="progress-bar" id="progressGrades" style="width: 0%"></div></div></div></div>
-          <div class="col-lg-4"><div class="glass-card"><h6>Payment Completion</h6><div class="progress mt-3"><div class="progress-bar" id="progressPayments" style="width: 0%"></div></div></div></div>
+          <div class="col-lg-4">
+            <div class="glass-card">
+              <div class="progress-meta">
+                <h6>Attendance Progress</h6>
+                <span class="progress-value" id="progressAttendanceValue">0%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" id="progressAttendance" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="glass-card">
+              <div class="progress-meta">
+                <h6>Grade Progress</h6>
+                <span class="progress-value" id="progressGradesValue">0%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" id="progressGrades" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="glass-card">
+              <div class="progress-meta">
+                <h6>Payment Completion</h6>
+                <span class="progress-value" id="progressPaymentsValue">0%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" id="progressPayments" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="row g-3 mt-2"><div class="col-lg-8"><div class="glass-card"><h5 class="mb-3">Recent Activity</h5><ul class="list-group" id="recentActivity"></ul></div></div><div class="col-lg-4"><div class="glass-card"><h5>Quick Alerts</h5><div class="text-muted">Use reports and notifications to track urgent items.</div></div></div></div>
       </main>
@@ -121,3 +152,5 @@
     <script src="assets/js/app.js"></script>
   </body>
 </html>
+
+

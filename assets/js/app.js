@@ -1,5 +1,48 @@
 ﻿const roleKey = "userRole";
 
+const themeKey = "theme";
+
+const getTheme = () => {
+  const stored = localStorage.getItem(themeKey);
+  if (stored) return stored;
+  localStorage.setItem(themeKey, "dark");
+  return "dark";
+};
+
+const setTheme = (theme) => {
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem(themeKey, theme);
+  updateThemeToggle();
+};
+
+const updateThemeToggle = () => {
+  const btn = document.getElementById("themeToggleBtn");
+  if (!btn) return;
+  const isLight = document.documentElement.dataset.theme === "light";
+  const icon = btn.querySelector("i");
+  if (icon) {
+    icon.className = isLight ? "bi bi-moon-stars" : "bi bi-sun";
+  }
+  const lang = document.documentElement.lang || "ar";
+  const label = lang.startsWith("ar")
+    ? (isLight ? "الوضع الداكن" : "الوضع الفاتح")
+    : (isLight ? "Dark mode" : "Light mode");
+  btn.setAttribute("aria-label", label);
+  btn.setAttribute("title", label);
+};
+
+const initTheme = () => {
+  const theme = getTheme();
+  document.documentElement.dataset.theme = theme;
+  updateThemeToggle();
+  const btn = document.getElementById("themeToggleBtn");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      const next = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+      setTheme(next);
+    });
+  }
+};
 const state = {
   role: "student",
   editingStudentId: null
@@ -135,6 +178,12 @@ const renderDashboard = () => {
   if (attendanceBar) attendanceBar.style.width = `${attendanceRate}%`;
   if (gradesBar) gradesBar.style.width = `${avgGrade}%`;
   if (paymentsBar) paymentsBar.style.width = `${payRate}%`;
+  const attendanceValue = document.getElementById("progressAttendanceValue");
+  const gradesValue = document.getElementById("progressGradesValue");
+  const paymentsValue = document.getElementById("progressPaymentsValue");
+  if (attendanceValue) attendanceValue.textContent = `${attendanceRate}%`;
+  if (gradesValue) gradesValue.textContent = `${avgGrade}%`;
+  if (paymentsValue) paymentsValue.textContent = `${payRate}%`;
 
   const activityList = document.getElementById("recentActivity");
   if (activityList) {
@@ -643,6 +692,7 @@ const renderAll = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   if (!window.appData) return;
+  initTheme();
   initRoleToggle();
   initRolePlacement();
   highlightActiveNav();
@@ -654,3 +704,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initPaymentsInteractions();
   initProfileImagePreview();
 });
+
+
+
