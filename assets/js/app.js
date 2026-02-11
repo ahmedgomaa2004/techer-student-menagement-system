@@ -55,6 +55,50 @@ const initRoleToggle = () => {
   }
 };
 
+const initRolePlacement = () => {
+  const badge = document.getElementById("roleBadge");
+  const toggle = document.getElementById("roleToggleBtn");
+  const offcanvasBody = document.querySelector("#mobileSidebar .offcanvas-body");
+  if (!badge || !toggle || !offcanvasBody) return;
+
+  const badgeHome = { parent: badge.parentNode, next: badge.nextSibling };
+  const toggleHome = { parent: toggle.parentNode, next: toggle.nextSibling };
+
+  let mobileContainer = offcanvasBody.querySelector(".role-mobile");
+  if (!mobileContainer) {
+    mobileContainer = document.createElement("div");
+    mobileContainer.className = "role-mobile d-flex align-items-center justify-content-between gap-2 mb-3";
+    offcanvasBody.insertBefore(mobileContainer, offcanvasBody.firstChild);
+  }
+
+  const restore = (el, home) => {
+    if (!home.parent) return;
+    if (home.next && home.next.parentNode === home.parent) {
+      home.parent.insertBefore(el, home.next);
+    } else {
+      home.parent.appendChild(el);
+    }
+  };
+
+  const applyPlacement = () => {
+    const isMobile = window.matchMedia("(max-width: 575.98px)").matches;
+    if (isMobile) {
+      if (!mobileContainer.contains(badge)) mobileContainer.appendChild(badge);
+      if (!mobileContainer.contains(toggle)) mobileContainer.appendChild(toggle);
+    } else {
+      if (mobileContainer.contains(badge)) restore(badge, badgeHome);
+      if (mobileContainer.contains(toggle)) restore(toggle, toggleHome);
+    }
+  };
+
+  applyPlacement();
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(applyPlacement, 120);
+  });
+};
+
 const highlightActiveNav = () => {
   const page = document.body.dataset.page;
   if (!page) return;
@@ -600,6 +644,7 @@ const renderAll = () => {
 document.addEventListener("DOMContentLoaded", () => {
   if (!window.appData) return;
   initRoleToggle();
+  initRolePlacement();
   highlightActiveNav();
   renderAll();
   initStudentsInteractions();

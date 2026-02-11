@@ -454,10 +454,15 @@ textarea.form-control:focus::placeholder {
   }
 
   .topbar > .d-flex {
-    width: 100%;
-    justify-content: space-between;
+    width: auto;
+    flex: 0 0 auto;
+    justify-content: flex-start;
     gap: 8px !important;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+  }
+
+  .topbar > .d-flex:last-child {
+    margin-inline-start: auto;
   }
 
   .topbar .btn,
@@ -468,6 +473,10 @@ textarea.form-control:focus::placeholder {
   .topbar .btn {
     padding-inline: 10px;
     font-size: 0.95rem;
+  }
+
+  .topbar .dropdown-toggle {
+    white-space: nowrap;
   }
 
   .topbar .role-toggle {
@@ -510,6 +519,19 @@ textarea.form-control:focus::placeholder {
 
   .breadcrumb {
     font-size: 0.9rem;
+  }
+
+  .role-mobile {
+    padding: 6px 4px;
+    border-bottom: 1px solid rgba(128, 142, 187, 0.2);
+  }
+
+  .role-mobile .badge {
+    font-size: 0.85rem;
+  }
+
+  .role-mobile .role-toggle {
+    padding: 6px 12px;
   }
 }
 
